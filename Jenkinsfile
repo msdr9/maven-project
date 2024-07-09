@@ -8,13 +8,13 @@ pipeline{
         
         //docker { image 'node:16-alpine' } 
     }*/
-    environment {
+   /*  environment {
         MAVEN_OPTS = '-Dmaven.repo.local=/devops/scm/mvn-projects/.m2/repository'
-    }
+    } */
     stages{
         stage('build')
         {
-            steps{
+            /* steps{
                 sh 'mvn clean package'
                 //sh 'mvn -Dmaven.repo.local=/devops/scm/mvn-projects/.m2/repository clean install'
             }
@@ -22,6 +22,9 @@ pipeline{
                 success{
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
+            } */
+            steps{
+                echo "This is Build"
             }
         }
 
