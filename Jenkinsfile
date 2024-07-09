@@ -17,15 +17,37 @@ pipeline{
         {
             steps{
                 sh 'mvn clean package'
-                echo "hello $NAME ${params.LASTNAME}"
+                echo "Hello $NAME ${params.LASTNAME}"
             }
-        
+        }
+
+        stage('test')
+        {
+            parallel{
+                stage('TestA'){
+                    steps{
+                        echo "This is Test A"
+                    }
+                }
+
+                stage('TestB'){
+                    steps{
+                        echo "This is Test B"
+                    }
+                }
+                stage('TestC'){
+                    steps{
+                        echo "This is Test C"
+                    }
+                }
+            }
             post{
                 success{
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
+
     }
     
 }
