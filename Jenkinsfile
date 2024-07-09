@@ -8,6 +8,9 @@ pipeline{
         
         //docker { image 'node:16-alpine' } 
     }*/
+    environment {
+        MAVEN_OPTS = '-Dmaven.repo.local=/devops/scm/mvn-projects/.m2/repository'
+    }
     stages{
         stage('build')
         {
